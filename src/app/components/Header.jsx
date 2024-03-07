@@ -1,17 +1,19 @@
 import Link from "next/link";
 import { UserButton, auth } from "@clerk/nextjs";
-import Profile from "../profile/page";
 
-export default function Header() {
+export default async function Header() {
   const { userId } = auth();
-  console.log(userId);
+
   return (
     <nav className="bg-emerald-700 py-4 px-6 flex items-center justify-between mb-5">
       <div className="flex items-center">
         <Link href="/">
-          <div className="text-lg uppercase font-bold text-white">Muvie</div>
+          <div className="text-lg uppercase font-bold text-white hover:text-emerald-500">
+            Muvie
+          </div>
         </Link>
       </div>
+
       <div className="text-white flex items-center">
         {!userId && (
           <>
