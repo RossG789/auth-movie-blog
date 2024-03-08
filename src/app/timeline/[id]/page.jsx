@@ -2,8 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { sql } from "@vercel/postgres";
 import { revalidatePath } from "next/cache";
-import CommentForm from "@/app/components/comment-form";
-import CommentField from "@/app/components/coment-field";
+import CommentField from "@/app/components/comments";
 
 export default async function Page({ params }) {
   console.log(params);
@@ -29,7 +28,7 @@ export default async function Page({ params }) {
         {review.username} said: &quot;{review.review}&quot;
       </p>
 
-      <CommentForm id={params.id} />
+      {/* <CommentForm id={params.id} /> */}
 
       <CommentField id={params.id} />
 
