@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { UserButton, auth } from "@clerk/nextjs";
+import { UserButton, auth, SignedIn, SignedOut } from "@clerk/nextjs";
 
 export default async function Header() {
   const { userId } = auth();
@@ -14,8 +14,21 @@ export default async function Header() {
         </Link>
       </div>
 
+      <div className="flex items-center">
+        <Link href="/timeline">
+          <div className="mr-2 text-lg uppercase font-bold text-white hover:text-emerald-500">
+            Timeline
+          </div>
+        </Link>
+        <Link href="/add-review">
+          <div className="ml-2 text-lg uppercase font-bold text-white hover:text-emerald-500">
+            Add Review
+          </div>
+        </Link>
+      </div>
+
       <div className="text-white flex items-center">
-        {!userId && (
+        <SignedOut>
           <>
             <Link
               href="sign-in"
@@ -30,12 +43,13 @@ export default async function Header() {
               Sign Up
             </Link>
           </>
-        )}
-        {userId && (
+        </SignedOut>
+
+        <SignedIn>
           <Link href="/profile" className="text-gray-300 hover:text-white mr-4">
             View Profile
           </Link>
-        )}
+        </SignedIn>
         <div className="ml-auto">
           <UserButton afterSignOutUrl="/" />
         </div>
