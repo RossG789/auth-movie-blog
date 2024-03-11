@@ -45,7 +45,7 @@ export default async function Page({ params }) {
         width={150}
         alt=""
       />
-      <p className="mt-6 p-2 w-96 h-20 text-start text-base bg-emerald-600 rounded-lg">
+      <p className="overflow-auto mt-6 p-2 w-96 h-20 text-start text-base bg-emerald-600 rounded-lg">
         {reviewData.reviewer_name} said: &quot;{reviewData.user_review}&quot;
       </p>
 
